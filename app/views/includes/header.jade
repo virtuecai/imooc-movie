@@ -4,19 +4,25 @@
             h1= title
             small 重度科幻迷
 
-.navbar.navbar-default.navbar-fixed-bottom
+.navbar.navbar-default.navbar-fixed-bottom(role="navigation")
     .container
         .navbar-header
             a.navbar-brand(href="/") 重度科幻迷
-        p.navbar-text.navbar-right
-            a.navbar-link(href="javascript:void(0);", data-toggle="modal", data-target="#signupModal") 注册
-            span &nbsp;|&nbsp;
-            a.navbar-link(href="javascript:void(0);", data-toggle="modal", data-target="#signinModal") 登录
+        if user
+            p.navbar-text.navbar-right
+                span 欢迎您, #{user.name}
+                span &nbsp;|&nbsp;
+                a.navbar-link(href="/logout") 退出
+        else
+            p.navbar-text.navbar-right
+                a.navbar-link(href="javascript:void(0);", data-toggle="modal", data-target="#loginModal") 登录
+                span &nbsp;|&nbsp;
+                a.navbar-link(href="javascript:void(0);", data-toggle="modal", data-target="#registerModal") 注册
 
-#signupModal.modal.fade
+#registerModal.modal.fade
     .modal-dialog
         .modal-content
-            form(method="post", action="/user/signup")
+            form(method="post", action="/user/register")
                 .modal-header 注册
                 .modal-body
                     .form-group
@@ -28,18 +34,18 @@
                 .modal-footer
                     button.btn.btn-default(type="button", data-dismiss="modal") 关闭
                     button.btn.btn-success(type="submit") 提交
-#signinModal.modal.fade
+#loginModal.modal.fade
     .modal-dialog
         .modal-content
-            form(method="POST", action="/user/signin")
+            form(method="POST", action="/user/login")
                 .modal-header 登录
                 .modal-body
                     .form-group
-                        label(for="signinName") 用户名
-                        input#signinName.form-control(name="user[name]", type="text")
+                        label(for="loginName") 用户名
+                        input#loginName.form-control(name="user[name]", type="text")
                     .form-group
-                        label(for="signinPassword") 密码
-                        input#signinPassword.form-control(name="user[password]", type="text")
+                        label(for="loginPassword") 密码
+                        input#loginPassword.form-control(name="user[password]", type="text")
                 .modal-footer
                     button.btn.btn-default(type="button", data-dismiss="modal") 关闭
                     button.btn.btn-success(type="submit") 提交

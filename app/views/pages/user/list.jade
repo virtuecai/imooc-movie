@@ -1,4 +1,4 @@
-extends ../layout
+extends ../../layout
 block content
     .container
         .row
@@ -9,7 +9,7 @@ block content
                         th 密码
                         th 注册时间
                         th 查看
-                        th 更新
+                        //th 更新
                         th 删除
                     tbody
                         each item in users
@@ -17,8 +17,8 @@ block content
                                 td #{item.name}
                                 td #{item.password}
                                 td #{moment(item.meta.createAt).format('MM/DD/YYYY')}
-                                td: a(target="_blank", href="../movie/#{item._id}") 查看
-                                td: a(target="_blank", href="../admin/update/#{item._id}") 修改
+                                td: a(target="_blank", href="/movie/#{item._id}") 查看
+                                //td: a(target="_blank", href="/admin/update/#{item._id}") 修改
                                 td
                                     button.btn.btn-danger.del(type="button", data-id="#{item._id}", role="button") 删除
     script(src="/js/user.js")

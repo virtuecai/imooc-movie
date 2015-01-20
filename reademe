@@ -13,3 +13,5 @@ npm install -g grunt-cli
 mongoose 静态方法与实例方法
 chemas.static = {xx: func...} 模型调用
 chemas.methods = { xx: func} 实例调用
+
+目录参考框架: mean
